@@ -1,27 +1,10 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
+import pg from "pg";
 
 dotenv.config();
 
-// For Vercel/serverless: Explicitly import and use pg module
-// This is critical for serverless deployments where native modules need explicit loading
-let pgModule;
-try {
-  // Import pg module - this ensures it's bundled and available
-  // Sequelize expects the module object with Pool, Client, etc.
-  const pgImport = await import('pg');
-  // Use default export if available, otherwise use the namespace
-  pgModule = pgImport.default || pgImport;
-  
-  // Verify the module has the expected structure
-  if (!pgModule && !pgImport.Pool) {
-    throw new Error('pg module structure is invalid');
-  }
-} catch (error) {
-  console.error('Critical: Could not load pg module:', error.message);
-  console.error('Please ensure pg is installed: npm install pg');
-  throw new Error('PostgreSQL driver (pg) is required. Please install: npm install pg');
-}
+
 
 const sequelize = new Sequelize(
   process.env.DB_NAME || 'postgres',
@@ -32,7 +15,7 @@ const sequelize = new Sequelize(
     port: parseInt(process.env.DB_PORT || '5432'),
     dialect: 'postgres',
     // Explicitly specify pg module for Vercel/serverless compatibility
-    dialectModule: pgModule,
+    dialectModule: pg,
     logging: process.env.NODE_ENV === 'development' ? console.log : false,
     // SSL configuration for Supabase and other cloud providers
     dialectOptions: {
