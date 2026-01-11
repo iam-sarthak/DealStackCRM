@@ -1,6 +1,11 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 
+// Explicitly import pg to ensure it's loaded in serverless environments
+// This helps with deployment environments like AWS Lambda
+// Sequelize will use pg automatically when dialect is 'postgres'
+import 'pg';
+
 dotenv.config();
 
 const sequelize = new Sequelize(
