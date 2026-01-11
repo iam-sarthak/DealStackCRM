@@ -1,0 +1,184 @@
+.worksheet-management {
+  width: 100%;
+}
+
+.worksheets-table-container {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.worksheets-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.worksheets-table thead {
+  background: var(--background);
+}
+
+.worksheets-table th {
+  padding: var(--spacing-sm);
+  text-align: left;
+  font-size: var(--font-label);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--border);
+}
+
+.worksheets-table td {
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+.worksheets-table tbody tr:hover {
+  background: var(--background);
+}
+
+.worksheet-title-cell {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.worksheet-title-cell svg {
+  color: var(--primary);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.worksheet-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  font-size: var(--font-body);
+}
+
+.worksheet-description {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+}
+
+.assigned-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--text-primary);
+  font-size: var(--font-body);
+}
+
+.assigned-cell svg {
+  color: var(--text-secondary);
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: var(--font-label);
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.priority-badge {
+  font-size: var(--font-body);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.progress-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  min-width: 120px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--background);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: var(--font-body);
+  color: var(--text-secondary);
+  min-width: 40px;
+  text-align: right;
+}
+
+.date-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--text-primary);
+  font-size: var(--font-body);
+}
+
+.date-cell svg {
+  color: var(--text-secondary);
+}
+
+.table-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+}
+
+.icon-btn:hover {
+  background: var(--background);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.icon-btn.delete:hover {
+  background: var(--error);
+  color: white;
+  border-color: var(--error);
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+  font-size: var(--font-body);
+}
+
+.empty-state svg {
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .worksheets-table-container {
+    overflow-x: auto;
+  }
+
+  .worksheets-table {
+    min-width: 800px;
+  }
+}
